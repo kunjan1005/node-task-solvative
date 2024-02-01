@@ -7,12 +7,16 @@ const db_pass = process.env.DB_PASS || ""
 const sequelize = new Sequelize(database, db_user, db_pass, {
     host: process.env.DB_HOST || "",
     dialect: 'postgres',
+    logging:false
 });
 //check database connected or not
-try {
-    await sequelize.authenticate();
+sequelize.authenticate().then(() => {
     console.log('Connection has been established successfully.');
-} catch (error) {
+}).catch((error) => {
     console.error('Unable to connect to the database:', error);
-}
+
+});
+
+//export database instance
+module.exports.database=sequelize
 

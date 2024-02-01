@@ -3,14 +3,15 @@ const  dotenv =require('dotenv')
 dotenv.config()
 //import additional modules
 const  express = require('express');
-const { ReviweController, reviewRouting } = require('./review/review.controller');
+require('./database/configuration')
+const { reviewRouting } = require('./v1/review/review.controller');
 const app=express()//express instance
 //use middlewares
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 //initialize routing
-app.use('api/reivew',reviewRouting)
+app.use('/api/review/',reviewRouting)
 const port=process.env.PORT||5000
 //server
 app.listen(port,()=>{
