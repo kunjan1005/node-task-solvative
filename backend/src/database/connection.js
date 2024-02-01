@@ -7,7 +7,7 @@ const db_pass = process.env.DB_PASS || ""
 const sequelize = new Sequelize(database, db_user, db_pass, {
     host: process.env.DB_HOST || "",
     dialect: 'postgres',
-    logging:false
+    logging:process.env.DB_LOG=='true'?true:false
 });
 //check database connected or not
 sequelize.authenticate().then(() => {

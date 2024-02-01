@@ -24,9 +24,9 @@ module.exports = class ReviewService {
             if (!sortingBy) sortingBy = 'createdAt'
             //check data sorting
             if (sort === '1') {
-                options.sort = [[sortingBy, "DESC"]]
+                options.order = [[sortingBy, "DESC"]]
             } else if (sort === '0') {
-                options.sort = [[sortingBy, "ASC"]]
+                options.order = [[sortingBy, "ASC"]]
             }
             //pagination
             options.limit = PAGE_SIZE

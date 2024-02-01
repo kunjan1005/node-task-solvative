@@ -5,9 +5,11 @@ dotenv.config()
 const  express = require('express');
 require('./database/configuration')
 const { reviewRouting } = require('./v1/review/review.controller');
+const cors=require('cors')
 const app=express()//express instance
 //use middlewares
 app.use(express.json())
+app.use(cors())
 app.use(express.urlencoded({extended:true}))
 
 //initialize routing
